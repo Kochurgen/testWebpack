@@ -1,0 +1,31 @@
+{
+  "name": "Webpak-template",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "vladimir <v.kochubenko@mobidev.biz>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "babel-polyfill": "^0.0.1",
+    "lodash": "^4.6.1",
+    "jquery": "^2.2.2",
+    "babel": "*"
+  }
+}
