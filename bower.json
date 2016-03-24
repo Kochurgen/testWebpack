@@ -25,7 +25,6 @@
   "dependencies": {
     "babel-polyfill": "^0.0.1",
     "lodash": "^4.6.1",
-    "jquery": "^2.2.2",
     "babel": "*"
   }
 }
