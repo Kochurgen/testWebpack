@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "start": "webpack ./app/index.js index.min.js"
+    "build": "webpack ./app/index.js index.min.js",
+    "start": "webpack-dev-server index.min.js"
   },
   "dependencies": {
     "jade-loader": "^0.8.0",
@@ -17,13 +18,16 @@
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.5.0",
     "bower-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "jade": "^1.11.0",
     "jade-html-loader": "0.0.3",
-    "style-loader": "^0.13.0",
+    "jsx-loader": "^0.13.2",
+    "less-loader": "^2.2.2",
+    "style-loader": "^0.13.1",
     "stylus-inline-webpack": "^1.0.0",
     "stylus-loader": "^1.5.1",
     "webpack": "^1.12.14",

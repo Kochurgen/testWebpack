@@ -13,11 +13,11 @@ module.exports = {
 
     output:  {
         path:     __dirname,
-        filename: "./src/index.min.js"
+        filename: "./index.min.js"
     },
     module:  {
         loaders: [
-            {test: /\.styl/, loader: "styl!css!autoprefixer?browsers=last 2 versions!stylus?resolve url"},
+            {test: /\.styl/, loader: "style!css!autoprefixer?browsers=last 2 versions!stylus?resolve url"},
             {test: /\.(woff|svg|ttf|eot)([\?]?.*)$/, loader: "file-loader?name=[name].[ext]"},
             {
                 exclude: /(node_modules|bower_components)/,
@@ -29,11 +29,7 @@ module.exports = {
                 },
                 test: /\.js$/,
             },
-            {
-                test: /\.styl$/,
-                loaders: ['style', 'css', 'stylus'],
-                include: path.style
-            }
+            { test: /\.less$/, loader: "style!css!autoprefixer?browsers=last 2 versions!less?resolve url" },
         ]
     },
     stylus: {
@@ -43,20 +39,18 @@ module.exports = {
             })
         }
     },
+    resolve: {
+        extensions: ['', ".js", ".ls", ".css", ".styl", ".less", ".html", ".jade"]
+    },
     plugins: [
         new BowerWebpackPlugin({
             excludes: /.*\.styl/
-        }),
-        new webpack.ProvidePlugin({
-            $:      "jquery",
-            jQuery: "jquery"
         }),
         new LiveReloadPlugin({
             port:8081
 
         }),
-        new webpack.optimize.UglifyJsPlugin({minimize: true}),
-
+        new webpack.optimize.UglifyJsPlugin({minimize: true})
     ]
 
 };
