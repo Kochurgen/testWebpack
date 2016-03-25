@@ -4,6 +4,7 @@ var BowerWebpackPlugin = require('bower-webpack-plugin');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var PROD = (process.env.NODE_ENV === 'production');
+var extractSTYLUS = new ExtractTextPlugin('app/style.styl');
 
 module.exports = {
     entry:   ["babel-polyfill",
@@ -17,7 +18,7 @@ module.exports = {
     },
     module:  {
         loaders: [
-            {test: /\.styl/, loader: "style!css!autoprefixer?browsers=last 2 versions!stylus?resolve url"},
+            // {test: /\.styl/, loader: "style!css!autoprefixer?browsers=last 2 versions!stylus?resolve url"},
             {test: /\.(woff|svg|ttf|eot)([\?]?.*)$/, loader: "file-loader?name=[name].[ext]"},
             {
                 exclude: /(node_modules|bower_components)/,
@@ -29,7 +30,8 @@ module.exports = {
                 },
                 test: /\.js$/,
             },
-            { test: /\.less$/, loader: "style!css!autoprefixer?browsers=last 2 versions!less?resolve url" },
+            // { test: /\.less$/, loader: "style!css!autoprefixer?browsers=last 2 versions!less?resolve url" },
+            {test: /\.styl$/i, loader: extractSTYLUS.extract(['css','stylus'])},
         ]
     },
     stylus: {
@@ -43,6 +45,7 @@ module.exports = {
         extensions: ['', ".js", ".ls", ".css", ".styl", ".less", ".html", ".jade"]
     },
     plugins: [
+        extractSTYLUS,
         new BowerWebpackPlugin({
             excludes: /.*\.styl/
         }),
